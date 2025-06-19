@@ -37,7 +37,7 @@ class BookServiceTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
-        ReflectionTestUtils.setField(bookService, "borrowDays", 30);
+        ReflectionTestUtils.setField(bookService, "borrowDays", 40);
     }
 
     @Test
@@ -446,7 +446,7 @@ class BookServiceTest {
                 .bookCreateDate(LocalDate.of(2020, 1, 1))
                 .bookStatus(BookStatus.OUT)
                 .bookBorrowerId("bookBorrowerId")
-                .borrowDate(LocalDate.now().minusDays(31))
+                .borrowDate(LocalDate.now().minusDays(41))
                 .overdueDays(2L)
                 .build());
         final List<Book> books = List.of(Book.builder()
@@ -459,7 +459,7 @@ class BookServiceTest {
                 .bookCreateDate(LocalDate.of(2020, 1, 1))
                 .bookStatus("2")
                 .bookBorrowerId("bookBorrowerId")
-                .borrowDate(LocalDate.now().minusDays(31))
+                .borrowDate(LocalDate.now().minusDays(41))
                 .build());
         when(bookRepository.findByBookStatusAndBorrowDateBeforeOrderByBorrowDateAscBookBorrowerId(any(), any())).thenReturn(books);
 
